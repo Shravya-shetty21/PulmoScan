@@ -1,0 +1,24 @@
+services:
+  # Python FastAPI Backend
+  - type: web
+    name: pulmoscan-backend
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    plan: free
+
+  # React Frontend Static Site
+  - type: web
+    name: pulmoscan-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          name: pulmoscan-backend
+          type: web
+          property: host

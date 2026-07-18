@@ -13,7 +13,7 @@ router = APIRouter(prefix="/predict", tags=["TB"])
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-MODEL_PATH = Path(r"D:\major project\lungcare-ai-starter-v2\backend\models\tb_model_best.pth")
+MODEL_PATH = Path(__file__).resolve().parent / "models" / "tb_model_best.pth"
 CLASSES = ["NORMAL", "TB"]
 
 # Build & load model

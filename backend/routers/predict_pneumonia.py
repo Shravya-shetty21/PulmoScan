@@ -10,7 +10,7 @@ from backend.services.grad_cam import generate_gradcam  # ✅ correct path
 router = APIRouter()
 
 # Paths
-MODEL_PATH = r"D:\major project\lungcare-ai-starter-v2\backend\pneumonia_model.pth"
+MODEL_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "pneumonia_model.pth")
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 

@@ -18,10 +18,11 @@ router = APIRouter(prefix="/predict", tags=["PulmoScan Predict"])
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 IMG_SIZE = 224
 
-# Model paths
-PNEUMONIA_MODEL_PATH = Path(r"D:\major project\lungcare-ai-starter-v2\backend\pneumonia_model.pth")
-TB_MODEL_PATH        = Path(r"D:\major project\lungcare-ai-starter-v2\backend\models\tb_model_best.pth")
-LUNG_MODEL_PATH      = Path(r"D:\major project\lungcare-ai-starter-v2\backend\lung_cancer_model.pth")
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+PNEUMONIA_MODEL_PATH = BASE_DIR / "pneumonia_model.pth"
+TB_MODEL_PATH        = BASE_DIR / "models" / "tb_model_best.pth"
+LUNG_MODEL_PATH      = BASE_DIR / "lung_cancer_model.pth"
 
 # Class names
 PNEUMONIA_CLASSES: List[str] = ["NORMAL", "PNEUMONIA"]

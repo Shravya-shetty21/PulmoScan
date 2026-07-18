@@ -12,7 +12,7 @@ from backend.services.grad_cam import generate_gradcam
 router = APIRouter(prefix="/predict", tags=["Lung Cancer"])
 
 # Adjust to your actual file location if different:
-MODEL_PATH = r"D:\major project\lungcare-ai-starter-v2\backend\lung_cancer_model.pth"
+MODEL_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "lung_cancer_model.pth")
 
 # ⚠ IMPORTANT: This must match the class order used during training.
 # If you saved train_ds.classes to a JSON, load it instead of hardcoding.
